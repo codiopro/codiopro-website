@@ -1,0 +1,4 @@
+web:
+  image: ${DOCKER_REGISTRY}/codiopro-website
+  ports:
+    - 80:80
