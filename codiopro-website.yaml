@@ -1,4 +1,15 @@
+api:
+  restart: always
+  image: ${DOCKER_REGISTRY}/codiopro-website-api
+  environment:
+    CODIOPRO_SENDGRID_API_KEY: ${CODIOPRO_SENDGRID_API_KEY}
+    CODIOPRO_WEBSITE_API_PORT: ${CODIOPRO_WEBSITE_API_PORT}
+
 web:
+  restart: always
   image: ${DOCKER_REGISTRY}/codiopro-website
   ports:
     - 80:80
+    - 443:443
+  links:
+    - api

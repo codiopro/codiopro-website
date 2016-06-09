@@ -1,26 +1,21 @@
 <!doctype html>
-
-<html lang="en">
+<html>
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
 
   <title>{codio.pro}</title>
-  <meta name="description" content="codio.pro">
+  <meta name="description" content="codio.pro Software Development as a Service">
   <meta name="author" content="codio.pro Engineering Team">
-  <link rel="stylesheet" href="styles.css">
-  <script src="https://use.fontawesome.com/4671e6fe28.js"></script>
 
-  <!--[if lt IE 9]>
-    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-  <![endif]-->
+  <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+  <link href='https://fonts.googleapis.com/css?family=Oxygen+Mono' rel='stylesheet' type='text/css'>
+  <link rel="import" href="dark-side.html">
+  <link rel="import" href="x-app.html">
 </head>
+<body unresolved>
 
-<body>
-  <div class="logo">
-    <img src="logo.svg" />
-  </div>
-  <a href="https://github.com/codiopro"><i class="fa fa-github" aria-hidden="true"></i></a>
-  <a href="https://www.facebook.com/codio.pro"><i class="fa fa-facebook-square" aria-hidden="true"></i></i></a>
-  <a href="mailto:info@codio.pro"><i class="fa fa-envelope-o" aria-hidden="true"></i></a>
+  <x-app></x-app>
+
 </body>
 </html>
