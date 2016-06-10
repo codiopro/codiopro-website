@@ -117,11 +117,6 @@
         line-height: 1.5;
       }
 
-      @media (max-width: 600px) {
-        .container {
-          @apply(--layout-vertical);
-        }
-      }
     </style>
 
     <app-header-layout>
@@ -165,7 +160,7 @@
         <div class="container">
           <div>
             <h3>Contact</h3>
-
+<p>
             <form is="iron-form" id="form" method="post" action="/api/messages">
               <paper-input name="firstName" required label="First Name"></paper-input>
               <paper-input name="lastName" required label="Last Name"></paper-input>
@@ -188,6 +183,7 @@
               </div>
               <paper-button class="submit" onclick="submitForm()" raised>Submit Form</paper-button>
             </form>
+          </p>
           </div>
         </div>
       </section>
