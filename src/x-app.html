@@ -116,7 +116,6 @@
       .container p {
         line-height: 1.5;
       }
-
     </style>
 
     <app-header-layout>
@@ -134,8 +133,12 @@
 
       <header>
         <p>
-          <a href="https://github.com/codiopro"><social-media-icons icon="github" color="#fff"></social-media-icons></a>
-          <a href="https://www.facebook.com/codio.pro"><social-media-icons icon="facebook" color="#fff"></social-media-icons></a>
+          <a href="https://github.com/codiopro">
+            <social-media-icons icon="github" color="#fff"></social-media-icons>
+          </a>
+          <a href="https://www.facebook.com/codio.pro">
+            <social-media-icons icon="facebook" color="#fff"></social-media-icons>
+          </a>
         </p>
       </header>
 
@@ -160,30 +163,30 @@
         <div class="container">
           <div>
             <h3>Contact</h3>
-<p>
-            <form is="iron-form" id="form" method="post" action="/api/messages">
-              <paper-input name="firstName" required label="First Name"></paper-input>
-              <paper-input name="lastName" required label="Last Name"></paper-input>
-              <paper-input name="email" required label="Email"></paper-input>
-              <paper-input name="phone" required label="Phone"></paper-input>
-              <paper-input name="companyName" label="Company Name"></paper-input>
-              <paper-textarea name="projectOverview" required label="Project Overview"></paper-textarea>
+            <p>
+              <form is="iron-form" id="form" method="post" action="/api/messages">
+                <paper-input name="firstName" required label="First Name"></paper-input>
+                <paper-input name="lastName" required label="Last Name"></paper-input>
+                <paper-input name="email" required label="Email"></paper-input>
+                <paper-input name="phone" required label="Phone"></paper-input>
+                <paper-input name="companyName" label="Company Name"></paper-input>
+                <paper-textarea name="projectOverview" required label="Project Overview"></paper-textarea>
 
-              <div class="budget-container">
-                <label id="budget-label">Approximate Budget</label>
-                <paper-radio-group required aria-labelledby="budget-label">
-                  <paper-radio-button name="from0to5k">Under $5k</paper-radio-button>
-                  <paper-radio-button name="from5to10k">$5-10k</paper-radio-button>
-                  <paper-radio-button name="from10to25">$10-25k</paper-radio-button>
-                  <paper-radio-button name="from25to75">$25-75k</paper-radio-button>
-                  <paper-radio-button name="from75to150">$75-150k</paper-radio-button>
-                  <paper-radio-button name="from150to250">$150-250k</paper-radio-button>
-                  <paper-radio-button name="from250k">$250k+</paper-radio-button>
-                </paper-radio-group>
-              </div>
-              <paper-button class="submit" onclick="submitForm()" raised>Submit Form</paper-button>
-            </form>
-          </p>
+                <div class="budget-container">
+                  <label id="budget-label">Approximate Budget</label>
+                  <paper-radio-group required aria-labelledby="budget-label">
+                    <paper-radio-button name="from0to5k">Under $5k</paper-radio-button>
+                    <paper-radio-button name="from5to10k">$5-10k</paper-radio-button>
+                    <paper-radio-button name="from10to25">$10-25k</paper-radio-button>
+                    <paper-radio-button name="from25to75">$25-75k</paper-radio-button>
+                    <paper-radio-button name="from75to150">$75-150k</paper-radio-button>
+                    <paper-radio-button name="from150to250">$150-250k</paper-radio-button>
+                    <paper-radio-button name="from250k">$250k+</paper-radio-button>
+                  </paper-radio-group>
+                </div>
+                <paper-button class="submit" onclick="submitForm()" raised>Submit Form</paper-button>
+              </form>
+            </p>
           </div>
         </div>
       </section>
@@ -210,9 +213,9 @@
     });
   </script>
   <script>
-    (function (i, s, o, g, r, a, m) {
+    (function(i, s, o, g, r, a, m) {
       i['GoogleAnalyticsObject'] = r;
-      i[r] = i[r] || function () {
+      i[r] = i[r] || function() {
         (i[r].q = i[r].q || []).push(arguments);
       }, i[r].l = 1 * new Date();
       a = s.createElement(o),
