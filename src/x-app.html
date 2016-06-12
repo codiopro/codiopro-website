@@ -1,42 +1,68 @@
-<link rel="import" href="bower_components/polymer/polymer.html">
-
-<link rel="import" href="bower_components/iron-flex-layout/iron-flex-layout.html">
-<link rel="import" href="bower_components/iron-icons/iron-icons.html">
-<link rel="import" href="bower_components/iron-icon/iron-icon.html">
-<link rel="import" href="bower_components/iron-input/iron-input.html">
-<link rel="import" href="bower_components/iron-form/iron-form.html">
-
 <link rel="import" href="bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
 <link rel="import" href="bower_components/app-layout/app-header/app-header.html">
 <link rel="import" href="bower_components/app-layout/app-header-layout/app-header-layout.html">
 <link rel="import" href="bower_components/app-layout/app-toolbar/app-toolbar.html">
-
+<link rel="import" href="bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="bower_components/iron-form/iron-form.html">
+<link rel="import" href="bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="bower_components/iron-input/iron-input.html">
+<link rel="import" href="bower_components/paper-button/paper-button.html">
+<link rel="import" href="bower_components/paper-card/paper-card.html">
 <link rel="import" href="bower_components/paper-icon-button/paper-icon-button.html">
-<link rel="import" href="bower_components/paper-styles/color.html">
 <link rel="import" href="bower_components/paper-input/paper-input-container.html">
 <link rel="import" href="bower_components/paper-input/paper-input-error.html">
 <link rel="import" href="bower_components/paper-input/paper-input.html">
 <link rel="import" href="bower_components/paper-input/paper-textarea.html">
-<link rel="import" href="bower_components/paper-button/paper-button.html">
-<link rel="import" href="bower_components/paper-card/paper-card.html">
-<link rel="import" href="bower_components/paper-radio-group/paper-radio-group.html">
 <link rel="import" href="bower_components/paper-radio-button/paper-radio-button.html">
+<link rel="import" href="bower_components/paper-radio-group/paper-radio-group.html">
+<link rel="import" href="bower_components/paper-scroll-header-panel/paper-scroll-header-panel.html">
+<link rel="import" href="bower_components/paper-toolbar/paper-toolbar.html">
+<link rel="import" href="bower_components/paper-styles/color.html">
+<link rel="import" href="bower_components/paper-spinner/paper-spinner.html">
+<link rel="import" href="bower_components/polymer/polymer.html">
 <link rel="import" href="bower_components/social-media-icons/social-media-icons.html">
-<link rel="import" href="bower_components/re-captcha/re-captcha.html">
 
 <dom-module id="x-app">
   <template>
+    <style is="custom-style">
+      paper-scroll-header-panel {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        --paper-scroll-header-panel-full-header: {
+          background-image: url('logo.svg');
+          background-position: center;
+          background-repeat: no-repeat;
+        }
+        ;
+        --paper-scroll-header-panel-condensed-header: {
+          background-color: #000;
+        }
+        ;
+      }
 
-    <style>
+      paper-toolbar.tall {
+        height: calc(50vh);
+        background-color: transparent;
+        overflow: visible;
+      }
+
+      paper-icon-button {
+        margin: 0 8px;
+        --paper-icon-button-ink-color: white;
+      }
+
+      .spacer {
+        @apply(--layout-flex);
+      }
+
       a {
         text-decoration: none;
         font-size: inherit;
         color: inherit;
-      }
-
-      .toolbar {
-        @apply(--layout-horizontal);
-        @apply(--layout-end-justified);
       }
 
       .tabs {
@@ -48,34 +74,15 @@
         @apply(--layout-vertical);
         @apply(--layout-center-center);
         margin: 12px 16px 12px;
-        border-bottom: 1px solid #222;
       }
 
-      header {
-        position: relative;
+      .icons> a {
+        margin-left: 4px;
+        margin-right: 4px;
+      }
+
+      .content {
         @apply(--layout-vertical);
-        @apply(--layout-center-center);
-        height: calc(100vh - 64px);
-        padding: 0 16px;
-        background-color: #000;
-        background-image: url('logo.svg');
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: contain;
-      }
-
-      header> p {
-        position: absolute;
-        bottom: 0;
-      }
-
-      social-media-icons {
-        margin-left: 8px;
-        margin-right: 8px;
-      }
-
-      section {
-        padding: 88px 16px;
       }
 
       .bracket {
@@ -83,34 +90,51 @@
       }
 
       paper-button.submit {
-        background: #fac32c;
+        background-color: #fac32c;
         color: #000;
-        float: right;
+        width: 40%;
+        min-width: 200px;
+      }
+
+      paper-button.submit[disabled] {
+        background-color: #000000;
+        color: #fac32c;
+      }
+
+      paper-spinner {
+        --paper-spinner-layer-1-color: #fac32c;
+        --paper-spinner-layer-2-color: #fff;
+        --paper-spinner-layer-3-color: #fac32c;
+        --paper-spinner-layer-4-color: #fff;
+        --paper-spinner-stroke-width: 4px;
+        width: 22px;
+        height: 22px;
       }
 
       .budget-container {
-        margin: 16px;
+        margin-top: 16px;
+        margin-bottom: 16px;
       }
 
       .container {
-        @apply(--layout-horizontal);
+        padding: 76px 16px 220px 16px;
+        @apply(--layout-vertical);
         max-width: 800px;
         margin: 0 auto;
-      }
-
-      .container> * {
-        @apply(--layout-flex);
-      }
-
-      .container img {
-        max-width: 100%;
-        max-height: 100%;
       }
 
       .container h3 {
         font-size: 32px;
         font-weight: 300;
-        margin: 24px 0;
+        margin-bottom: 16px;
+        margin-top: 0px;
+      }
+
+      .container h4 {
+        font-size: 22px;
+        font-weight: 300;
+        margin-bottom: 16px;
+        margin-top: 16px;
       }
 
       .container p {
@@ -118,53 +142,53 @@
       }
     </style>
 
-    <app-header-layout>
+    <paper-scroll-header-panel condenses condensed-header-height="64">
 
-      <app-header reveals effects="waterfall">
+      <paper-toolbar class="tall">
 
-        <app-toolbar class="toolbar">
-          <div class="tabs">
-            <a href="#about">About</a>
-            <a href="#contact">Contact</a>
-          </div>
-        </app-toolbar>
+        <div class="logo">
+          <span class="bracket">{</span>codio.pro<span class="bracket">}</span>
+        </div>
+        <div class="spacer"></div>
+        <div class="tabs">
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </paper-toolbar>
 
-      </app-header>
+      <div class="content">
 
-      <header>
-        <p>
-          <a href="https://github.com/codiopro">
-            <social-media-icons icon="github" color="#fff"></social-media-icons>
-          </a>
-          <a href="https://www.facebook.com/codio.pro">
-            <social-media-icons icon="facebook" color="#fff"></social-media-icons>
-          </a>
-        </p>
-      </header>
-
-      <section id="about">
-        <div class="container">
+        <div class="container" id="about">
           <div>
             <h3>About</h3>
-            <p><span class="bracket">{</span>codio.pro<span class="bracket">}</span> is enterprise-level software engineering team providing a full spectrum of custom software development services.</p>
+            <p><span class="bracket">{</span>codio.pro<span class="bracket">}</span> is an enterprise-level software engineering team providing a full spectrum of custom software development services.</p>
             <p>We support all modern solution stacks and frameworks.</p>
-            <p>All of our engineers have been carefully selected based on the following <span class="bracket">{</span>codio.pro<span class="bracket">}</span> requirements:</p>
+            <p>All our engineers have been carefully selected based on the following <span class="bracket">{</span>codio.pro<span class="bracket">}</span> requirements:</p>
             <ul>
               <li>PhD or Bachelor’s Degree in Computer Science or a related technical field</li>
               <li>At least 5 years of professional programming experience</li>
               <li>Exceptional problem solving skills</li>
               <li>Passionate about software development</li>
             </ul>
+            <div class="icons">
+              <a href="https://github.com/codiopro">
+                <social-media-icons icon="github" color="#fff"></social-media-icons>
+              </a>
+              <a href="https://www.facebook.com/codio.pro">
+                <social-media-icons icon="facebook" color="#fff"></social-media-icons>
+              </a>
+            </div>
           </div>
         </div>
-      </section>
 
-      <section id="contact">
-        <div class="container">
+        <div class="container" id="contact">
           <div>
             <h3>Contact</h3>
             <p>
-              <form is="iron-form" id="form" method="post" action="/api/messages">
+              Tell us about your project. Give us a call, send us an email or a letter - or drop by to have a chat. We are always here to help out in whatever way we can.
+            </p>
+            <p>
+              <form is="iron-form" id="contactForm" on-change="onContactFormChange" on-iron-form-submit="onContactFormSubmit" method="post" action="/api/messages">
                 <paper-input name="firstName" required label="First Name"></paper-input>
                 <paper-input name="lastName" required label="Last Name"></paper-input>
                 <paper-input name="email" required label="Email"></paper-input>
@@ -184,35 +208,70 @@
                     <paper-radio-button name="from250k">$250k+</paper-radio-button>
                   </paper-radio-group>
                 </div>
-                <paper-button class="submit" onclick="submitForm()" raised>Submit Form</paper-button>
+                <center>
+                  <paper-button id="contactFormSubmit" class="submit" on-tap="onContactFormTap" raised disabled>
+                    <paper-spinner id="contactFormSpinner" hidden></paper-spinner>
+                    <span id="contactFormSubmitText">Submit Form</span>
+                  </paper-button>
+                </center>
               </form>
             </p>
           </div>
         </div>
-      </section>
 
-      <section id="footer">
-        <div class="container">
+        <div class="container" id="address">
           <div>
-            <p>&copy; 2016 <span class="bracket">{</span>codio.pro<span class="bracket">}</span></p>
-            <p>4444 Geary Blvd 309A, San Francisco, CA 94118</p>
+            <h3>Mailing Address</h3>
+            <p>
+              <span class="bracket">{</span>codio.pro<span class="bracket">}</span>
+              <br/> 4444 Geary Blvd
+              <br/> Suite 309A
+              <br/> San Francisco, CA 94118
+            </p>
+            <p><a href="mailto:info@codio.pro">info@codio.pro</a></p>
+            <p>Tel. +1.415.854.2829</p>
           </div>
         </div>
-      </section>
-    </app-header-layout>
 
+        <div class="container">
+          <center>
+            <p>Copyright &copy; 2016. Codio. All rights reserved</p>
+          </center>
+        </div>
+
+      </div>
+    </paper-scroll-header-panel>
   </template>
 
   <script>
-    function submitForm() {
-      document.getElementById('form').submit();
-    }
-
     Polymer({
       is: 'x-app',
+
+      onContactFormChange: function(event) {
+        contactFormSubmit.disabled = !contactForm.validate();
+      },
+
+      onContactFormTap: function(event) {
+        contactFormSpinner.active = true;
+        contactFormSpinner.hidden = false;
+        contactFormSubmit.disabled = true;
+        contactFormSubmitText.hidden = true;
+
+        setTimeout(function() {
+          contactForm.submit();
+        }, 1000);
+      },
+
+      onContactFormSubmit: function(event) {
+        contactFormSpinner.active = false;
+        contactFormSpinner.hidden = true;
+        contactFormSubmit.disabled = true;
+        contactFormSubmitText.hidden = false;
+
+        contactForm.reset();
+      },
     });
-  </script>
-  <script>
+
     (function(i, s, o, g, r, a, m) {
       i['GoogleAnalyticsObject'] = r;
       i[r] = i[r] || function() {
